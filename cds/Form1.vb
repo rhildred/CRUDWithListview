@@ -1,4 +1,4 @@
-﻿Imports System.Data.SqlClient
+Imports System.Data.SqlClient
 
 Public Class Form1
     Dim connString As String = "Server=.\SQLEXPRESS;Database=cds;Trusted_Connection=True;"
@@ -54,5 +54,23 @@ Public Class Form1
         Dim lvItem As New ListViewItem(txtTitle.Text)
         lvItem.SubItems.Add(txtArtist.Text)
         lvCDs.Items.Add(lvItem)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If lvCDs.SelectedItems.Count > 0 Then
+            Dim oCd As Cd = lItems(lvCDs.SelectedIndices(0))
+            oCd.sArtist = txtArtist.Text
+            oCd.sTitle = txtTitle.Text
+            Dim stmt As New SqlCommand()
+            stmt.CommandText = "UPDATE cds SET artist = @artist, title = @title WHERE id = @id"
+            stmt.Connection = cnn
+            stmt.Parameters.AddWithValue("artist", oCd.sArtist)
+            stmt.Parameters.AddWithValue("title", oCd.sTitle)
+            stmt.Parameters.AddWithValue("id", oCd.nId)
+            stmt.ExecuteNonQuery()
+            Dim lvi As ListViewItem = lvCDs.SelectedItems(0)
+            lvi.SubItems(0).Text = oCd.sTitle
+            lvi.SubItems(1).Text = oCd.sArtist
+        End If
     End Sub
 End Class
