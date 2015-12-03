@@ -27,6 +27,7 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.txtArtist = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lvCDs
@@ -69,11 +70,21 @@ Partial Class Form1
         Me.txtArtist.Size = New System.Drawing.Size(100, 26)
         Me.txtArtist.TabIndex = 5
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(33, 364)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(93, 41)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Create CD"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(531, 438)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtArtist)
         Me.Controls.Add(Me.txtTitle)
         Me.Controls.Add(Me.Label3)
@@ -90,5 +101,6 @@ Partial Class Form1
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtTitle As System.Windows.Forms.TextBox
     Friend WithEvents txtArtist As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
